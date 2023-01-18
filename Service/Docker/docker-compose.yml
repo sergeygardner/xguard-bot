@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  php:
+    build:
+      context: ../../
+      dockerfile: ./Service/Docker/Dockerfile
+    command: sh /run/run-php.sh
+    container_name: "service-facebook-to-telegram-bot-php"
+    depends_on:
+      - database
+    environment:
+      TZ: "Europe/Moscow"
+    env_file:
+      - ../../App/.env
+      - ../../App/.env.local
+    restart: always
+    tty: true
+    volumes:
+      - ../../App:/app:cached
+      - ../php.d/99-projects.ini:/usr/local/etc/php/conf.d/99-projects.ini:ro
+      - ../../App/var/composer/cache/:/root/.composer/cache/:delegated
+      - ../run/run-php-dev.sh:/run/run-php.sh:delegated
+      - ~/.ssh/:/root/.ssh/
+      - ~/.ssh/:/home/www/.ssh/
+
+  database:
+    container_name: "service-facebook-to-telegram-bot-database"
+    environment:
+      TZ: "Europe/Moscow"
+    env_file:
+      - ../postgres/.env
+    image: postgres:latest
+    networks:
+      service-facebook-to-telegram-bot-network:
+        aliases:
+          - database.local
+      service-database-facebook-to-telegram-bot-network:
+        aliases:
+          - database.local
+    restart: always
+    tty: true
+    volumes:
+      - ../postgres/data/:/data/db/:delegated
+
+networks:
+  service-database-facebook-to-telegram-bot-network:
+    name: service-database-facebook-to-telegram-bot
+  service-facebook-to-telegram-bot-network:
+    name: service-facebook-to-telegram-bot

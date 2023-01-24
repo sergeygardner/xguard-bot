@@ -11,7 +11,7 @@ COPY ./Service/run/ /run/
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apk upgrade && apk add bash && chmod +x /usr/local/bin/install-php-extensions && sync \
-    && install-php-extensions mcrypt intl opcache bcmath pcntl \
+    && install-php-extensions mcrypt intl opcache bcmath pcntl pgsql pdo_pgsql \
     && env > /etc/environment
 
 WORKDIR /app

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="XGuard\Bot\Shared\Domain\Entity\MessageActionEntity" table="s_message_action">
+        <id name="id" column="id" type="UuidType"/>
+        <field name="message_id" column="message_id" type="UuidType"/>
+        <field name="channel_to_bot_id" column="channel_to_bot_id" type="UuidType"/>
+        <field name="action_date" column="action_date" type="DateType"/>
+        <field name="action" column="action" type="ActionType"/>
+    </entity>
+
+</doctrine-mapping>

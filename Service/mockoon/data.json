@@ -1,0 +1,110 @@
+{
+  "uuid": "a951d525-f5a1-4909-b762-82a2900bff27",
+  "lastMigration": 27,
+  "name": "Data",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 80,
+  "hostname": "graph.facebook.com",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "04e0c247-9ac2-4f24-9d3d-8f303e0bc432",
+      "type": "http",
+      "documentation": "The path for getting the authorization token",
+      "method": "get",
+      "endpoint": "v17.0/oauth/access_token",
+      "responses": [
+        {
+          "uuid": "0a866df8-74ea-4a51-9986-a59e65efa3cc",
+          "body": "{\"access_token\":\"1240570099871115|Cr79BqVIxsdcrtlRTd0LUaEh_xA\",\"token_type\":\"Bearer\"}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1cca8c13-4e12-4a2d-83ca-85c0509f3feb",
+      "type": "http",
+      "documentation": "The posts of the users",
+      "method": "get",
+      "endpoint": "v17.0/[^/]+/posts",
+      "responses": [
+        {
+          "uuid": "5eeba1b8-689c-4992-9ef8-917fd9c9e762",
+          "body": "{\n  \"data\":[\n    {\n      \"id\": \"ZmVlZGJhY2s6NjQwODk0NzA3NTgzODI0Nl83OTE2OTg0NTI2NzM3NTk=\",\n      \"created_time\": 1689027418,\n      \"message\": \"Незлобивый текст, адресованный домашним животным – «Когда уже вы, паскуды, нажретесь?» - в современных российских условиях на наших глазах превращается в жесткий политический манифест.\",\n      \"story\": \"story\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "04e0c247-9ac2-4f24-9d3d-8f303e0bc432"
+    },
+    {
+      "type": "route",
+      "uuid": "1cca8c13-4e12-4a2d-83ca-85c0509f3feb"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

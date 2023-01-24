@@ -1,8 +1,10 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-use App\Telegram\UI\Service\BotService;
+use XGuard\Bot\Shared\Infrastructure\Service\BotContextChangerService;
 
-require dirname(__DIR__,1) . '/vendor/autoload.php';
+require dirname(__DIR__, 1) . '/vendor/autoload.php';
 
-$botService = new BotService();
+$botContextChangerService = new BotContextChangerService($argv);
+
+$botContextChangerService->switch();

@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  mockoon:
+    command: --data data --port 80
+    container_name: "xguard-service-bot-mockoon"
+    environment:
+      TZ: "Europe/London"
+    image: mockoon/cli
+    networks:
+      service-bot-network:
+        aliases:
+          - graph.facebook.com
+    restart: always
+    tty: true
+    ports:
+      - '8080:80'
+    volumes:
+      - ../mockoon/data.json:/data:delegated
+      - ../mockoon/ssl:/ssl:delegated
+
+networks:
+  service-bot-network:
+    name: xguard-service-bot-network
+    external: true
